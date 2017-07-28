@@ -31,10 +31,21 @@ def test_grouparg(share_def):
 
 
 def build_parser():
+    def csv(stringtarget):
+        return stringtarget.split(',')
+
     parser = argparse.ArgumentParser(
         description=__doc__,
         formatter_class=argparse.RawDescriptionHelpFormatter)
 
+    parser.add_argument(
+        '-c',
+        '--csv',
+        type=csv,
+        help='take in options from a csv split string',
+        default='thing1,thing2',
+        dest='csv_items')
+    # A list of items in csv form
     parser.add_argument(
         '-x',
         '--example',
@@ -96,3 +107,6 @@ if __name__ == '__main__':  # pragma: no cover
 
     test_xclusive(xclusive=args.xclusive)
     test_grouparg(share_def=sdef)
+    if args.csv_items:
+        for i in args.csv_items:
+            print 'csv: {}'.format(i)
