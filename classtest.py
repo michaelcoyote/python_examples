@@ -5,7 +5,7 @@ some tests around staticmethod and classmethod decorators along with methods
 for programmatically loading external data using a dict defined in a static
 method as a map between the external and internal data.
 
-Also shown is the property decorator, however setters and deleters are 
+Also shown is the property decorator, however setters and deleters are
 not shown.
 
 more info about static and class methods at stackexchange:

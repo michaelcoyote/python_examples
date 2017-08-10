@@ -18,8 +18,8 @@ class Cache:
 
     def update(self, key, value):
         """Update and clean cache."""
-        if (key not in self.cache and 
-            len(self.cache) >= self.max_cache_size):
+        if (key not in self.cache and
+                len(self.cache) >= self.max_cache_size):
             self.expire_oldest()
         self.cache[key] = {'date_accessed': datetime.datetime.now(),
                            'value': value}
@@ -41,6 +41,7 @@ class Cache:
         """Cache size."""
         return len(self.cache)
 
+
 def main():
     keys = ['foo', 'bar', 'baz', 'moo', 'vxx', 'quxx', 'gack', 'florb',
             'rarg', 'boop', 'wrm', 'flum', 'mox', 'arrd']
@@ -51,9 +52,10 @@ def main():
             continue
         else:
             value = ' '.join([random.choice(c) for i in range(20)])
-            cache.update(key,value)
-        print '{} iterations, {} cached entries'.format( i+1, cache.size)
+            cache.update(key, value)
+        print '{} iterations, {} cached entries'.format(i+1, cache.size)
     print
+
 
 if __name__ == '__main__':
     main()

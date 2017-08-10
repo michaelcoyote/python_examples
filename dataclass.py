@@ -1,4 +1,4 @@
-#/usr/bin/env python
+#!/usr/bin/env python
 
 
 class TestObj(object):
@@ -9,4 +9,3 @@ class TestObj(object):
         self.dat1 = dat1
         self.dat2 = dat2
         self.dat3 = dat3
-
