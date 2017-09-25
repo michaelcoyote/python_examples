@@ -16,11 +16,17 @@ info about property decorators:
 
 
 class Test(object):
-    def __init__(self, i=1, data={}, stuff={}):
+    def __init__(self, i=1, data=None, stuff=None):
         self.i = i
         print 'init var {}'.format(self.i)
-        if stuff:
-            self.l_stuff(stuff)
+        self.data = data
+        self.stuff = stuff or {}
+        self.l_stuff(self.stuff)
+
+    def __repr__(self):
+        return ('Test(i={}, data={}, stuff={})'.format(self.i,
+                                                       self.data,
+                                                       self.stuff))
 
     def m_basic(self):
         print 'basic method {}'.format(self.i)
@@ -97,6 +103,9 @@ def main():
     print '### property decorator ###'
     test_6 = Test(6)
     print 'the contents of i: {}'.format(test_6.get_i)
+    # Representation
+    test_7 = Test(7)
+    print 'the representation: {}'.format(repr(test_7))
 
 
 if __name__ == '__main__':
