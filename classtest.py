@@ -5,8 +5,7 @@ some tests around staticmethod and classmethod decorators along with methods
 for programmatically loading external data using a dict defined in a static
 method as a map between the external and internal data.
 
-Also shown is the property decorator, however setters and deleters are
-not shown.
+Also shown is the property decorator, with a setter and deleter example.
 
 more info about static and class methods at stackexchange:
     http://bit.ly/2sAjHEx
@@ -46,8 +45,19 @@ class Test(object):
         return i2
 
     @property
-    def get_i(self):
+    def i_method(self):
         return self.i
+
+    @i_method.setter
+    def i_method(self, new_i=None):
+        if new_i is not None:
+            self.i = new_i
+        return self.i
+
+    @i_method.deleter
+    def i_method(self):
+        print 'i_method deleter called.'
+        del self.i
 
     @staticmethod
     def _attributes():
@@ -100,9 +110,12 @@ def main():
     test_5 = Test(5, stuff=stuff)
     test_5.d_stuff()
     # test a property
-    print '### property decorator ###'
+    print '### property decorators ###'
     test_6 = Test(6)
-    print 'the contents of i: {}'.format(test_6.get_i)
+    print 'the contents of i: {}'.format(test_6.i_method)
+    test_6.i_method = 66
+    print 'updated i: {}'.format(test_6.i_method)
+    del test_6.i_method
     # Representation
     test_7 = Test(7)
     print 'the representation: {}'.format(repr(test_7))
