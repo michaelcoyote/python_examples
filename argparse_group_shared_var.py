@@ -92,6 +92,8 @@ def build_parser():
         action='store_const',
         const='bbbbb',
         dest='xclusive')
+    # set a default of 'bbbbb' for the group
+    parser.set_defaults(xclusive='bbbbb')
 
     return parser
 
