@@ -15,6 +15,8 @@ class testInput(npyscreen.ActionForm):
     The action form class gives us on_ok and on_cancel"""
     def activate(self):
         self.edit()
+        # This sets the NEXT_ACTIVE_FORM attribute which tells the app class
+        # where to go next
         self.parentApp.setNextForm('Display')
 
     def create(self):
