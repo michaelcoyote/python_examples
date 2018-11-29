@@ -1,0 +1,24 @@
+# Mock conf file generated via template
+# this is base setting
+base_setting = foooo
+# a looped config
+{% for config_item in conf_data.a_list %}
+config_item{{config_item}}: {{config_item}}
+{% endfor %}
+# loop through dict
+{% for key, val in conf_data.b_dict.items() %}
+{{key}}: {{val}}
+{% endfor %}
+{# render nested config #}
+{% for topkey, topval in conf_data.c_nested.items() %}
+# header {{ topkey }}
+[Section {{topkey}}]
+{% for key, value in topval.items() %}
+{{key}}: {{value}}
+{% endfor %}
+{% endfor %}
+{# skip an empty thing #}
+{% if d_empty %}
+{{d_empty}}
+{% endif %}
+
