@@ -1,0 +1,41 @@
+# Resume of {{resume_data.personal.name}}
+{% for key, val in resume_data.personal.items() %}
+{% if val is string %}
+- {{key | make_title}}: {{val}}
+{% elif val is iterable %}
+- Address:
+    {{val.address}}
+    {{val.city}}, {{val.region}}, {{val.countryCode}}
+    {{val.postalCode}}
+{% endif %}
+{% endfor %}
+
+#### objective  
+
+{{resume_data.objective}}
+
+## Skills
+{% for topkey, topval in resume_data.skills.items() %}
+{% if topval %}
+-  {{ topkey | make_title }}
+{% for val in topval %}
+    - {{val}}
+{% endfor %}
+{% endif %}
+{% endfor %}
+
+## Work Experience
+
+{# loop through list of work #}
+{% for workitem in resume_data.work %}
+### {{workitem.company}}      {{workitem.startDate}} to {{workitem.endDate}}
+_{{workitem.position}}_
+{% if workitem.website %}
+- {{workitem.website}}
+{% endif %}
+- {{workitem.summary}}
+    {% for hl in workitem.highlights %}
+    - {{hl}}
+    {% endfor %}
+{% endfor %}
+
