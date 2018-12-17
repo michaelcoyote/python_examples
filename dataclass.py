@@ -10,14 +10,14 @@ class TestObj(object):
         Make sure that dat1 is shorter than 10 characters.
         """
         if len(dat1) < 10:
-            self.dat1 = dat1
+            self._dat1 = dat1
         else:
             raise Exception("dat1 is longer than 10 char: {}" % dat1)
 
-        self.dat2 = dat2
-        self.dat3 = dat3
+        self._dat2 = dat2
+        self._dat3 = dat3
 
     def __str__(self):
         """Stringify data from object."""
         return('dat1: {} dat2: {} dat3: {}'
-               .format(self.dat1, self.dat2, self.dat3))
+               .format(self._dat1, self._dat2, self._dat3))
