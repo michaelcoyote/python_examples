@@ -12,7 +12,7 @@ class TestObj(object):
         if len(dat1) < 10:
             self._dat1 = dat1
         else:
-            raise Exception("dat1 is longer than 10 char: {}" % dat1)
+            raise ValueError("dat1 is longer than 10 char: {}" % dat1)
 
         self._dat2 = dat2
         self._dat3 = dat3
