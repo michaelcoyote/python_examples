@@ -34,8 +34,8 @@ _{{workitem.position}}_
 - {{workitem.website}}
 {% endif %}
 - {{workitem.summary}}
-    {% for hl in workitem.highlights %}
+{% for hl in workitem.highlights %}
     - {{hl}}
-    {% endfor %}
+{% endfor %}
 {% endfor %}
 
