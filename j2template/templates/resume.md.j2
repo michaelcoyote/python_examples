@@ -29,13 +29,13 @@
 {# loop through list of work #}
 {% for workitem in resume_data.work %}
 ### {{workitem.company}}      {{workitem.startDate}} to {{workitem.endDate}}
-_{{workitem.position}}_  
-{% if workitem.website %}  
-- {{workitem.website}}   
-{% endif %}  
-- {{workitem.summary}}  
+_{{workitem.position}}_
+{% if workitem.website %}
+- {{workitem.website}}
+{% endif %}
+- {{workitem.summary}}
 {% for hl in workitem.highlights %}
-    - {{hl}}  
+    - {{hl}}
 {% endfor %}
 {% endfor %}
 
