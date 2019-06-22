@@ -72,3 +72,23 @@ class TestBirthdayCandle(object):
         result = foo1.birthday_candle(ar)
         assert(result == 1)
 
+
+class TestTimeConverter(object):
+
+    def test_time_converter_one(self):
+        foo1 = warmup.Warmup()
+        s = '07:05:45PM'
+        result = foo1.time_converter(s)
+        assert(result == '19:05:45')
+
+    def test_time_converter_two(self):
+        foo1 = warmup.Warmup()
+        s = '12:00:00AM'
+        result = foo1.time_converter(s)
+        assert(result == '00:00:00')
+
+    def test_time_converter_three(self):
+        foo1 = warmup.Warmup()
+        s = '12:40:22AM'
+        result = foo1.time_converter(s)
+        assert(result == '00:40:22')

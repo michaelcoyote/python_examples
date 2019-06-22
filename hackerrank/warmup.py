@@ -88,7 +88,8 @@ class Warmup(object):
         return [totals[0], totals[-1]]
 
     def birthday_candle(self, ar):
-        ar.sort() 
+        '''Return the number of instances of max in array.'''
+        ar.sort()
         ar.reverse()
         count = 0
         for t in ar:
@@ -97,3 +98,29 @@ class Warmup(object):
             else:
                 break
         return count
+
+    def time_converter(self, s):
+        '''Given time in AM/PM format, convert to 24-hr time.
+
+        Input:
+        A single string `s` containing a time in 24-hr clock format
+
+        Output:
+        Time in 24-hr format
+
+        Notes: Midnight is 12:00:00AM on a 12-hour clock, and
+        00:00:00 on a 24-hour clock. Noon is 12:00:00PM on a
+        12-hour clock, and 12:00:00 on a 24-hour clock.
+        '''
+        ss = s.split(':')
+        if s[8:10] == 'PM':
+            if int(ss[0]) == 12:
+                result = f"12:{ss[1]}:{ss[2][0:2]}"
+            elif int(ss[1]) >= 1:
+                result = f"{int(ss[0]) + 12}:{ss[1]}:{ss[2][0:2]}"
+        else:
+            if int(ss[0]) == 12:
+                result = f"00:{ss[1]}:{ss[2][0:2]}"
+            else:
+                result = f"{ss[0]}:{ss[1]}:{ss[2][0:2]}"
+        return result
