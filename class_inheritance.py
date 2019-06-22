@@ -2,7 +2,7 @@
 """This is an example."""
 
 
-class Base:
+class Base(object):
     """Test Parent Class."""
 
     def __init__(self):
@@ -23,7 +23,7 @@ class SubClassOverride(Base):
     def __init__(self):
         # If you want to use the __init__() from Base you need
         # to call it explicitly
-        super().__init__(self)
+        super(Base, self).__init__()
         print('This is extra code from the __init__ override')
 
     def class_method(self):
@@ -47,7 +47,7 @@ def main():
     print('Subclass method with overrides')
     override = SubClassOverride()
     override.class_method()
-    override.new_sublcass_method()
+    override.new_subclass_method()
 
 
 if __name__ == '__main__':
