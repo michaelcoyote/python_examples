@@ -38,19 +38,19 @@ class DecoratorCall(object):
         def new_f():
             print('function: {}'.format(f.__name__))
             f()
-            print '{}'.format(self.incoming)
+            print('{}'.format(self.incoming))
         return new_f
 
 
 @DecoratorCall('world')
 def hello():
-    print 'hello'
+    print('hello')
 
 
 def main():
     cc = CallableCache()
-    for i in xrange(4):
-        print'{}'.format(cc(2))
+    for i in range(0, 4):
+        print('{}'.format(cc(2)))
     # decorated function
     hello()
 

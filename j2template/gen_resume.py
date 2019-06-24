@@ -4,6 +4,8 @@
 import json
 from jinja2 import Environment, FileSystemLoader
 
+FILENAME = "/Users/michael/notes/personal/resume.json"
+
 
 def render_resume(resume_file, resume_data):
     """Read the template and render config."""
@@ -16,23 +18,28 @@ def render_resume(resume_file, resume_data):
     template = j_env.get_template(resume_file + '.j2')
     return template.render(resume_data=resume_data)
 
+
 def is_list(value):
     return isinstance(value, list)
+
 
 def make_title(value):
     return value.replace('_', ' ').title()
 
-def load_resume(filename="/Users/michael/notes/personal/resume.json"):
+
+def load_resume(filename=FILENAME):
     with open(filename, 'r') as f:
         resume_dict = json.load(f)
     # print resume_dict
     return resume_dict
 
+
 def main():
 
     resume_data = load_resume()
-    rendered_t = render_resume(resume_file='resume.md', resume_data=resume_data)
-    print rendered_t
+    rendered_t = render_resume(resume_file='resume.md',
+                               resume_data=resume_data)
+    print(rendered_t)
 
 
 if __name__ == "__main__":

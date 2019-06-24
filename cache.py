@@ -32,7 +32,7 @@ class Cache:
                 oldest_entry = key
             elif (self.cache[key]['date_accessed'] <
                   self.cache[oldest_entry]['date_accessed']):
-                print 'Removing cache entry: {}'.format(oldest_entry)
+                print('Removing cache entry: {}'.format(oldest_entry))
                 self.cache.pop(oldest_entry)
                 oldest_entry = None
 
@@ -53,7 +53,7 @@ def main():
         else:
             value = ' '.join([random.choice(c) for i in range(20)])
             cache.update(key, value)
-        print '{} iterations, {} cached entries'.format(i+1, cache.size)
+        print('{} iterations, {} cached entries'.format(i+1, cache.size))
     print
 
 

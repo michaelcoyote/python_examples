@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 """Extended arguments and keyword arguments."""
 
+
 def hypervolume(length, *lengths):
     """Non keyword arg example.
 
@@ -31,17 +32,18 @@ def tag(name, **attributes):
 
 
 def main():
-    print '{}'.format(hypervolume(2))
-    print '{}'.format(hypervolume(2, 4))
-    print '{}'.format(hypervolume(2, 4, 6))
-    print '{}'.format(hypervolume(2, 4, 6, 8))
-    print '{}'.format(tag('img', src='kozik_labbit.jpg', alt='Smorkin Labbit'))
+    print('{}'.format(hypervolume(2)))
+    print('{}'.format(hypervolume(2, 4)))
+    print('{}'.format(hypervolume(2, 4, 6)))
+    print('{}'.format(hypervolume(2, 4, 6, 8)))
+    print('{}'.format(tag('img', src='kozik_labbit.jpg',
+                          alt='Smorkin Labbit')))
     # *args call syntax
     thisthat = ['this', 'that']
-    print '{}: {}'.format(*thisthat)
+    print('{}: {}'.format(*thisthat))
     # **kwargs call syntax
     backforth = {'b': 'back', 'f': 'forth'}
-    print '{b}: {f}'.format(**backforth)
+    print('{b}: {f}'.format(**backforth))
 
 
 if __name__ == '__main__':

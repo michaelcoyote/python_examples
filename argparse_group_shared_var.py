@@ -11,23 +11,23 @@ import pprint
 
 def test_xclusive(xclusive):
     if xclusive == 'aaaaa':
-        print "the a's have it"
+        print("the a's have it")
     elif xclusive == 'bbbbb':
-        print "it be"
+        print("it be")
 
 
 def test_grouparg(share_def):
     foo = 0
     if 'd' in share_def:
         foo += 1
-        print 'd',
+        print('d')
     if 'e' in share_def:
-        print 'e',
+        print('e')
         foo += 2
     if 'f' in share_def:
-        print 'f'
+        print('f')
         foo += 4
-    print foo
+    print(foo)
 
 
 def build_parser():
@@ -111,4 +111,4 @@ if __name__ == '__main__':  # pragma: no cover
     test_grouparg(share_def=sdef)
     if args.csv_items:
         for i in args.csv_items:
-            print 'csv: {}'.format(i)
+            print('csv: {}'.format(i))

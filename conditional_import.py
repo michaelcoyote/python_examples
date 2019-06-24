@@ -16,11 +16,11 @@ class ImportTest1(object):
         self.greet = greet
 
     def hello(self):
-        print ('hello, {}'.format(self.greet))
+        print('hello, {}'.format(self.greet))
         if self.gh_user:
-            print ('hello, {}'.format(self.req.json()['name']))
-            print ('your name was determined by looking up your GH '
-                   'username: {}'.format(self.gh_user))
+            print('hello, {}'.format(self.req.json()['name']))
+            print('your name was determined by looking up your GH '
+                  'username: {}'.format(self.gh_user))
 
 
 def main():

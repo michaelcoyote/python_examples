@@ -7,11 +7,11 @@ import argparse
 def test_passargument(share_def):
     """Choose to do a, b or both."""
     def a_thing():
-        print "do a thing"
+        print("do a thing")
         return 1
 
     def b_thing():
-        print "do b thing"
+        print("do b thing")
         return 2
 
     if 'a' and 'b' in share_def:

@@ -49,6 +49,5 @@ def main():
     print('Binary Search - Result: {}'.format(binsrc_r))
 
 
-
 if __name__ == '__main__':
     main()

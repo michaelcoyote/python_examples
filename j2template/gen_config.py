@@ -46,7 +46,7 @@ def main():
 
     # print conf_data
     rendered_t = config_gen(conf_file='test.conf', conf_data=conf_data)
-    print rendered_t
+    print(rendered_t)
 
 
 if __name__ == "__main__":

@@ -60,11 +60,11 @@ class testOutput(npyscreen.ActionForm):
 
     def on_ok(self):
         # Print doesn't seem to work here.
-        print ('name: {}\ndepartment: {}\ndqate: {}\n'.format(
-                   self.name.value,
-                   self.dept.value,
-                   self.date.value)
-               )
+        print('name: {}\ndepartment: {}\ndqate: {}\n'.format(
+            self.name.value,
+            self.dept.value,
+            self.date.value)
+              )
         # the exit_application function doesn't do much but sys.exit does
         # self.exit_application
         sys.exit(0)

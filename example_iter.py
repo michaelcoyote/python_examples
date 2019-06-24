@@ -42,20 +42,20 @@ class AltIter:
 def main():
     print('A standard iterator example')
     for i in IterableExample():
-        print ('Std: {}'.format(i))
+        print('Std: {}'.format(i))
 
     print('An alternate iterator example')
     [print('Alt: {}'.format(i * 3)) for i in AltIter()]
 
     # iter() examples
     # Make an iterator out of an array
-    print ('Iterate through some letters')
+    print('Iterate through some letters')
     letters = ['l', 'e', 't', 't', 'e', 'r', 's']
     iterletters = iter(letters)
     for l in iterletters:
-        print ('Iter: {}'.format(l))
+        print('Iter: {}'.format(l))
     # time based iter example
-    print ("Iterate over a time example using iter()")
+    print("Iterate over a time example using iter()")
     ie = iter(datetime.datetime.now, None)
     print('Initial iteration after initalization: {}'.format(next(ie)))
     time.sleep(2)
@@ -64,6 +64,7 @@ def main():
     # with open('ending_file.txt', 'rt') as f:
     #     for line in iter(lambda: f.readline().strip(), 'END'):
     #         print line
+
 
 if __name__ == '__main__':
     main()
