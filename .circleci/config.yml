@@ -7,6 +7,7 @@ jobs:
     steps:
     - checkout
     - run:
+        name: Set up Python environment
         command: |
             sudo pip install pipenv
             pipenv install
@@ -17,7 +18,12 @@ jobs:
           - "/usr/local/bin"
           - "/usr/local/lib/python3.6/site-packages"
     - run:
+        name: Lint check
+        command: pipenv flake8
+    - run:
+        name: Unit testing
         command: |
-            pipenv run pytest -v
+            mkdir test-reports
+            pipenv run pytest -v --junitxml=test-reports/junit.xml
     - store_test_results: # Upload test results for display in Test Summary: https://circleci.com/docs/2.0/collect-test-data/
           path: test-results
