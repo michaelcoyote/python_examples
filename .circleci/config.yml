@@ -20,7 +20,7 @@ jobs:
           - "/usr/local/lib/python3.6/site-packages"
     - run:
         name: Lint check
-        command: pipenv run flake8 --output-file test-results
+        command: pipenv run flake8 --output-file test-results/flake8_lint_report.txt
     - run:
         name: Unit testing
         command: |
