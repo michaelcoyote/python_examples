@@ -9,6 +9,7 @@ jobs:
     - run:
         name: Set up Python environment
         command: |
+            mkdir test-results
             sudo pip install pipenv
             pipenv install
     - save_cache: # cache Python dependencies using checksum of Pipfile as the cache-key
@@ -18,9 +19,11 @@ jobs:
           - "/usr/local/bin"
           - "/usr/local/lib/python3.6/site-packages"
     - run:
+        name: Lint check
+        command: pipenv run flake8 --output-file test-results
+    - run:
         name: Unit testing
         command: |
-            mkdir test-reports
-            pipenv run pytest -v --junitxml=test-reports/junit.xml
+            pipenv run pytest -v --junitxml=test-results/junit.xml
     - store_test_results: # Upload test results for display in Test Summary: https://circleci.com/docs/2.0/collect-test-data/
           path: test-results
