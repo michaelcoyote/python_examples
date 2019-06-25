@@ -21,7 +21,7 @@ jobs:
     - run:
         name: Lint check
         command: |
-            pipenv run flake8
+            pipenv run flake8 |tee test-results/flake8_lint_report.txt
     - run:
         name: Unit testing
         command: |
