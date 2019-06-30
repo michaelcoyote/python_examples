@@ -71,7 +71,7 @@ class Test(object):
     def l_stuff(self, stuff={}):
         """Load external dict to internal dict using map."""
         loaded = {}
-        for key, value in self._attributes().iteritems():
+        for key, value in self._attributes().items():
             loaded[value] = stuff.get(key, None)
             self.loaded = loaded
         return loaded
