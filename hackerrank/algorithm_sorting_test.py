@@ -11,6 +11,18 @@ class TestIntroTutorial(object):
         assert(result == 1)
 
 
+class TestInsertionSortOne(object):
+    def test_insertion_sort_pt1_one(self):
+        arrays = [[2, 4, 6, 8, 8],
+                  [2, 4, 6, 6, 8],
+                  [2, 4, 4, 6, 8],
+                  [2, 3, 4, 6, 8]]
+        sort1 = algorithm_sorting.Sorting()
+        arr = [2, 4, 6, 8, 3]
+        result = sort1.insertion_sort_pt1(arr)
+        assert(result == arrays)
+
+
 class TestMedian(object):
     def test_median_one(self):
         sort1 = algorithm_sorting.Sorting()
