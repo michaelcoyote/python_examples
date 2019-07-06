@@ -22,6 +22,23 @@ class TestInsertionSortOne(object):
         result = sort1.insertion_sort_pt1(arr)
         assert(result == arrays)
 
+    def test_insertion_sort_pt1_two(self):
+        arrays = [[2, 3, 4, 5, 6, 7, 8, 9, 10, 10],
+                  [2, 3, 4, 5, 6, 7, 8, 9, 9, 10],
+                  [2, 3, 4, 5, 6, 7, 8, 8, 9, 10],
+                  [2, 3, 4, 5, 6, 7, 7, 8, 9, 10],
+                  [2, 3, 4, 5, 6, 6, 7, 8, 9, 10],
+                  [2, 3, 4, 5, 5, 6, 7, 8, 9, 10],
+                  [2, 3, 4, 4, 5, 6, 7, 8, 9, 10],
+                  [2, 3, 3, 4, 5, 6, 7, 8, 9, 10],
+                  [2, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+                  [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]]
+
+        sort1 = algorithm_sorting.Sorting()
+        arr = [2, 3, 4, 5, 6, 7, 8, 9, 10, 1]
+        result = sort1.insertion_sort_pt1(arr)
+        assert(result == arrays)
+
 
 class TestMedian(object):
     def test_median_one(self):

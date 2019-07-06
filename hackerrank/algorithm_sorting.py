@@ -46,11 +46,11 @@ class Sorting(object):
         del(arr[marker])
         while i >= 0:
             p = arr[i]
-            # print(f'Array position {i}: {arr[i]} Hold: {hold}')
+            print(f'Array position {i}: {arr[i]} Hold: {hold}')
             if hold < arr[i]:
                 # Insert value in new position and remove value in old position
                 arr.insert(i, p)
-                print(str(arr))
+                print('i' + str(arr))
                 result.append(deepcopy(arr))
                 del(arr[i + 1])
                 # Decrement hold & marker if test succeeds
@@ -58,9 +58,14 @@ class Sorting(object):
                 i -= 1
             else:
                 arr.insert(i + 1, hold)
-                print(str(arr))
+                hold = -1
+                print('e' + str(arr))
                 result.append(deepcopy(arr))
                 break
+        if hold > 0:
+            arr.insert(i + 1, hold)
+            print('e' + str(arr))
+            result.append(deepcopy(arr))
         return result
 
     def median(self, arr):
