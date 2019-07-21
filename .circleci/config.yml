@@ -1,3 +1,4 @@
+---
 version: 2
 jobs:
   build:  # required for runs that don't use workflows
@@ -5,26 +6,32 @@ jobs:
     docker:
       - image: circleci/python:3.7.3
     steps:
-    - checkout
-    - run:
-        name: Set up Python environment
-        command: |
-            mkdir test-results
-            sudo pip install pipenv
-            pipenv install
-    - save_cache: # cache Python dependencies using checksum of Pipfile as the cache-key
-        key: deps9-{{ .Branch }}-{{ checksum "Pipfile.lock" }}
-        paths:
-          - ".venv"
-          - "/usr/local/bin"
-          - "/usr/local/lib/python3.6/site-packages"
-    - run:
-        name: Lint check
-        command: |
-            pipenv run flake8 |tee test-results/flake8_lint_report.txt
-    - run:
-        name: Unit testing
-        command: |
-            pipenv run pytest -v --junitxml=test-results/junit.xml
-    - store_test_results: # Upload test results for display in Test Summary: https://circleci.com/docs/2.0/collect-test-data/
+      - checkout
+      - run:
+          name: Set up Python environment
+          command: |
+              mkdir test-results
+              sudo pip install pipenv
+              pipenv install
+              curl -H 'Cache-Control: no-cache' https://raw.githubusercontent.com/fossas/fossa-cli/master/install.sh | bash
+      - save_cache:  # cache Python deps using Pipfile checksum as the cache-key
+          key: deps9-{{ .Branch }}-{{ checksum "Pipfile.lock" }}
+          paths:
+            - ".venv"
+            - "/usr/local/bin"
+            - "/usr/local/lib/python3.6/site-packages"
+      - run:
+          name: Lint check
+          command: |
+              pipenv run flake8 |tee test-results/flake8_lint_report.txt
+      - run:
+          name: Unit testing
+          command: |
+              pipenv run pytest -v --junitxml=test-results/junit.xml
+      - run:
+          name: License check
+          command: |
+              fossa init
+              fossa analyze
+      - store_test_results:
           path: test-results
