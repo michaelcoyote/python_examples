@@ -21,3 +21,17 @@ class TestClassExample(object):
         ex1 = class_examples.Test(i=23, data='datum')
         print(repr(ex1))
         assert(repr(ex1) == 'Test(i=23, data=datum, stuff={})')
+
+    def test_ex_classmethod(object):
+        assert(class_examples.Test.m_class() == 1)
+
+    def test_internal_external_map(object):
+        dict_in = {
+                'external_1': 'thing 1',
+                'external_2': 'thing 2'
+                }
+        ex1 = class_examples.Test()
+        ex1.load_stuff(stuff=dict_in)
+        assert(ex1.d_stuff() == {'internal1': 'thing 1',
+                                 'internal2': 'thing 2',
+                                 'internal3': None})

@@ -16,11 +16,16 @@ info about property decorators:
 
 class Test(object):
     def __init__(self, i=1, data=None, stuff=None):
+        """Initializer methods configure the class copy.
+
+        Assignment of variables and data validation can
+        happen here.
+        """
         self.i = i
         print('init var {}'.format(self.i))
         self.data = data
         self.stuff = stuff or {}
-        self.l_stuff(self.stuff)
+        self.load_stuff(self.stuff)
 
     def __repr__(self):
         return ('Test(i={}, data={}, stuff={})'.format(self.i,
@@ -33,16 +38,33 @@ class Test(object):
 
     @classmethod
     def m_class(cls):
+        """The classmethod accesses the class object directly.
+
+        Note that the cls keyword is a shortcut for the
+        actual class name (in this case Test).
+
+        Use classmethod if you need to access the class methods
+        or instances.
+        """
         # i1 = self.i
         i1 = cls().m_basic()
         print('class method {}'.format(i1))
-        return cls
+        return i1
 
     @staticmethod
-    def m_static(i2=2):
-        # i2 = Test.m_basic()
-        print('static method {}'.format(i2))
-        return i2
+    def m_static(nonclassvar=2):
+        """The staticmethod has no access to the class.
+
+        Generally this is used for implementation details since it
+        has no access to the class or instance objects.
+
+        Think carefully about your Class organization when using
+        this as it may make sense to split out a staticmethod into
+        it's own module instead of having it in the class.
+        """
+        # nonclassvar = Test.m_basic()
+        print('static method {}'.format(nonclassvar))
+        return nonclassvar
 
     @property
     def i_method(self):
@@ -68,17 +90,19 @@ class Test(object):
             'external_3': 'internal3',
         }
 
-    def l_stuff(self, stuff={}):
+    def load_stuff(self, stuff={}):
         """Load external dict to internal dict using map."""
         loaded = {}
         for key, value in self._attributes().items():
             loaded[value] = stuff.get(key, None)
-            self.loaded = loaded
+            self.int_stuff = loaded
         return loaded
 
     def d_stuff(self):
-        for key, value in self._attributes().iteritems():
-            print('{}: {}'.format(value, self.loaded.get(value, 'nothing')))
+        """Display the internally mapped stuff."""
+        for key, value in self._attributes().items():
+            print('{}: {}'.format(value, self.int_stuff.get(value, 'nothing')))
+        return self.int_stuff
 
 
 def main():
@@ -103,7 +127,7 @@ def main():
             'external_2': 'another thing 2'
             }
     test_4 = Test(4)
-    test_4.l_stuff(stuff=stuff)
+    test_4.load_stuff(stuff=stuff)
     test_4.d_stuff()
     # load stuff from __init__
     print('### Same but using __init__() ###')
