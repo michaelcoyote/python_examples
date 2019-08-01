@@ -9,14 +9,16 @@ import argparse
 import pprint
 
 
-def test_xclusive(xclusive):
+def demo_xclusive(xclusive):
     if xclusive == 'aaaaa':
         print("the a's have it")
+        return 'a'
     elif xclusive == 'bbbbb':
         print("it be")
+        return 'b'
 
 
-def test_grouparg(share_def):
+def demo_grouparg(share_def):
     foo = 0
     if 'd' in share_def:
         foo += 1
@@ -28,6 +30,7 @@ def test_grouparg(share_def):
         print('f')
         foo += 4
     print(foo)
+    return foo
 
 
 def build_parser():
@@ -107,8 +110,8 @@ if __name__ == '__main__':  # pragma: no cover
     else:
         sdef = args.sdef
 
-    test_xclusive(xclusive=args.xclusive)
-    test_grouparg(share_def=sdef)
+    demo_xclusive(xclusive=args.xclusive)
+    demo_grouparg(share_def=sdef)
     if args.csv_items:
         for i in args.csv_items:
             print('csv: {}'.format(i))
