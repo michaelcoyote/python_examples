@@ -18,6 +18,7 @@ class ClassExample(object):
         http://bit.ly/2sAjHEx
     info about property decorators:
         http://bit.ly/2txQDL5
+        PEP-318: https://www.python.org/dev/peps/pep-0318/
     """
 
     def __init__(self, i=1, data=None, stuff=None):
@@ -72,11 +73,14 @@ class ClassExample(object):
         """Basic method implementation.
 
         We can set and get with this method but must use the
-        standard interface to do so."""
+        standard interface to do so and the class must be
+        instansiated before use.
+        e.g. no calling with ClassExample.m_basic()
+        """
         if i is not None:
             self.int_value = i
         print('basic method {}'.format(self._integer_value))
-        return self._integer_value
+        return self.int_value
 
     @classmethod
     def m_class(cls):
