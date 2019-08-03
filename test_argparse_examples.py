@@ -40,6 +40,7 @@ class TestArgparseExamples(object):
             assert(args.xclusive == output)
 
 
+# these are mostly for the coverage :-)
 def test_demo_grouparg():
     demo = argparse_examples.demo_grouparg(['d', 'e', 'f'])
     assert(demo == 7)

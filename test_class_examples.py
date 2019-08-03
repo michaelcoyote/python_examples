@@ -6,6 +6,8 @@ class TestClassExample(object):
     def test_ex_import(self):
         ex1 = class_examples.ClassExample()
         assert(ex1.m_basic() == 1)
+        ex1.m_basic(i=2)
+        assert(ex1.m_basic() == 2)
 
     def test_ex_getter(object):
         ex1 = class_examples.ClassExample()
@@ -29,6 +31,9 @@ class TestClassExample(object):
         ex1 = class_examples.ClassExample(i=23, data='datum')
         print(repr(ex1))
         assert(repr(ex1) == 'ClassExample(i=23, data=datum, stuff={})')
+
+    def test_ex_staticmethod(object):
+        assert(class_examples.ClassExample.m_static(3) == 3)
 
     def test_ex_classmethod(object):
         assert(class_examples.ClassExample.m_class() == 1)
