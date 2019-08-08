@@ -15,6 +15,12 @@ class TestCache(object):
         """Test template"""
         assert('foo' in cache_setup)
 
+    def test_get_hit_from_cache(self, cache_setup):
+        assert(cache_setup.get('bar') == 2)
+
+    def test_get_miss_from_cache(self, cache_setup):
+        assert(cache_setup.get('does_not_exist') is None)
+
     def test_not_in_cache(self, cache_setup):
         assert('baz' not in cache_setup)
 
