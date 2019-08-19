@@ -13,9 +13,7 @@ jobs:
               mkdir test-results
               sudo pip install pipenv
               pipenv install
-              curl -H 'Cache-Control: no-cache' \
-                https://raw.githubusercontent.com\
-                /fossas/fossa-cli/master/install.sh | bash
+              curl -H 'Cache-Control: no-cache'  https://raw.githubusercontent.com/fossas/fossa-cli/master/install.sh | bash
       - save_cache:  # cache Python deps using Pipfile checksum as the cache-key
           key: deps9-{{ .Branch }}-{{ checksum "Pipfile.lock" }}
           paths:
