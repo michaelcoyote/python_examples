@@ -2,6 +2,20 @@
 """Example Algorithms."""
 
 
+class Node(object):
+    def __init__(self, value, link):
+        self.value = value
+        self.link = link
+
+    @property
+    def value(self):
+        return self._value
+
+    @value.setter
+    def value(self, value):
+        self._value = value
+
+
 def binary_search(narray, nleft, nright, ntarget):
     """Binary Search.
 
