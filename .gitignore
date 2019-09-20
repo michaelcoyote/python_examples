@@ -4,3 +4,4 @@
 *tgz
 *gz
 .DS_Store
+.mypy_cache/
