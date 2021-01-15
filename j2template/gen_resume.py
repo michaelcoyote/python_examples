@@ -4,7 +4,7 @@
 import json
 from jinja2 import Environment, FileSystemLoader
 
-FILENAME = "/Users/michael/notes/personal/resume.json"
+FILENAME = "../../resume/resume.json"
 
 
 def render_resume(resume_file, resume_data):

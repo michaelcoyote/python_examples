@@ -1,4 +1,6 @@
 # Resume of {{resume_data.personal.name}}
+
+## Contact
 {% for key, val in resume_data.personal.items() %}
 {% if val is string %}
 - {{key | make_title}}: {{val}}
@@ -29,13 +31,9 @@
 {# loop through list of work #}
 {% for workitem in resume_data.work %}
 ### {{workitem.company}}      {{workitem.startDate}} to {{workitem.endDate}}
-_{{workitem.position}}_
-{% if workitem.website %}
-- {{workitem.website}}
-{% endif %}
-- {{workitem.summary}}
+_{{workitem.position}}_ - {{workitem.summary}}
 {% for hl in workitem.highlights %}
-    - {{hl}}
+- {{hl}}
 {% endfor %}
 {% endfor %}
 
